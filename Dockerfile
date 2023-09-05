@@ -51,6 +51,7 @@ ENV JRE_HOME /home/openolat/jre
 
 ENV DB_PASSWORD default
 ENV DB_URL jdbc:postgresql://localhost:5432/oodb
+ENV OLAT_HOST localhost
 
 RUN mkdir -p /home/openolat/conf/Catalina/localhost/
 COPY ./ROOT.xml /home/openolat/conf/Catalina/localhost/ROOT.xml
