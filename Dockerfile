@@ -54,8 +54,7 @@ ENV DB_URL jdbc:postgresql://localhost:5432/oodb
 ENV OLAT_HOST localhost
 ENV EXTRA_PROPERTIES none
 
-RUN mkdir -p /home/openolat/conf/Catalina/${OLAT_HOST}/
-COPY ./ROOT.xml /home/openolat/conf/Catalina/${OLAT_HOST}/ROOT.xml
+COPY ./ROOT.xml /home/openolat/tmp-ROOT.xml
 
 COPY ./olat.local.properties /home/openolat/lib/olat.local.properties
 
