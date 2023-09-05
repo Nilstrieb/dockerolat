@@ -1,0 +1,26 @@
+version: "3.8"
+services:
+  openolatdb:
+    container_name: openolatdb
+    image: postgres:latest
+    ports:
+      - "5432:5432"
+    environment:
+      POSTGRES_USER: oodbu
+      POSTGRES_PASSWORD: default
+      POSTGRES_DB: oodb
+    networks:
+      - olatnetwork
+  olat:
+    container_name: openolat
+    build: ./
+    ports:
+      - "8088:8088"
+    environment:
+      DB_PASSWORD: default
+      DB_URL: "jdbc:postgresql://openolatdb:5432/oodb"
+    networks:
+      - olatnetwork
+
+networks:
+  olatnetwork:
