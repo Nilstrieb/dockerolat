@@ -1,7 +1,13 @@
 FROM ubuntu:22.04
 
 RUN apt-get update
-RUN apt-get install -y curl unzip
+RUN apt-get install -y curl unzip locales
+
+RUN sed -i '/en_US.UTF-8/s/^# //g' /etc/locale.gen && \
+    locale-gen
+ENV LANG en_US.UTF-8  
+ENV LANGUAGE en_US:en  
+ENV LC_ALL en_US.UTF-8
 
 RUN useradd -m -s /bin/bash openolat
 
@@ -19,9 +25,9 @@ RUN curl -OL https://github.com/adoptium/temurin17-binaries/releases/download/jd
     && ln -s jdk-17.0.8.1+1-jre jre \
     && rm -r ./downloads
 
-RUN curl -O https://www.openolat.com/releases/openolat_17214.war --output-dir ./downloads --create-dirs \
-    && unzip -d openolat-17.2.14 ./downloads/openolat_17214.war \
-    && ln -s openolat-17.2.14 webapp \
+RUN curl -O https://www.openolat.com/releases/openolat_1804.war --output-dir ./downloads --create-dirs \
+    && unzip -d openolat-18.0.4 ./downloads/openolat_1804.war \
+    && ln -s openolat-18.0.4 webapp \
     && rm -r ./downloads
 
 RUN mkdir bin conf lib run logs
@@ -48,6 +54,8 @@ ENV DB_URL jdbc:postgresql://localhost:5432/oodb
 
 RUN mkdir -p /home/openolat/conf/Catalina/localhost/
 COPY ./ROOT.xml /home/openolat/conf/Catalina/localhost/ROOT.xml
+
+COPY ./olat.local.properties /home/openolat/lib/olat.local.properties
 
 COPY ./entrypoint.sh /home/openolat/entrypoint.sh
 
