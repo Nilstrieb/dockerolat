@@ -25,9 +25,9 @@ RUN curl -OL https://github.com/adoptium/temurin17-binaries/releases/download/jd
     && ln -s jdk-17.0.8.1+1-jre jre \
     && rm -r ./downloads
 
-RUN curl -O https://www.openolat.com/releases/openolat_1804.war --output-dir ./downloads --create-dirs \
-    && unzip -d openolat-18.0.4 ./downloads/openolat_1804.war \
-    && ln -s openolat-18.0.4 webapp \
+RUN curl -O https://www.openolat.com/releases/openolat_1810.war --output-dir ./downloads --create-dirs \
+    && unzip -d openolat-18.1.0 ./downloads/openolat_1810.war \
+    && ln -s openolat-18.1.0 webapp \
     && rm -r ./downloads
 
 RUN mkdir bin conf lib run logs
