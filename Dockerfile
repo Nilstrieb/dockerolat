@@ -15,9 +15,9 @@ WORKDIR /home/openolat
 
 USER openolat
 
-RUN curl -O https://dlcdn.apache.org/tomcat/tomcat-10/v10.1.13/bin/apache-tomcat-10.1.13.tar.gz --output-dir ./downloads --create-dirs \
-    && tar -xzf ./downloads/apache-tomcat-10.1.13.tar.gz \
-    && ln -s apache-tomcat-10.1.13 tomcat \
+RUN curl -O https://dlcdn.apache.org/tomcat/tomcat-10/v10.1.19/bin/apache-tomcat-10.1.19.tar.gz --output-dir ./downloads --create-dirs \
+    && tar -xzf ./downloads/apache-tomcat-10.1.19.tar.gz \
+    && ln -s apache-tomcat-10.1.19 tomcat \
     && rm -r ./downloads
 
 RUN curl -OL https://github.com/adoptium/temurin17-binaries/releases/download/jdk-17.0.8.1%2B1/OpenJDK17U-jre_x64_linux_hotspot_17.0.8.1_1.tar.gz --output-dir ./downloads --create-dirs \
